@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Gui">
+      <UniqueIdentifier>{514b892a-0165-4c27-9763-06311d1bafd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AStart">
+      <UniqueIdentifier>{f3989ccb-65c8-4a59-8150-69d42cc5ccf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Aliens">
+      <UniqueIdentifier>{54f37cd1-e13c-4077-a784-da467c93c877}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Towers">
+      <UniqueIdentifier>{711765cd-bc80-4fd2-bd5f-644df798a906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Gui">
+      <UniqueIdentifier>{6b6b5dd7-746e-4337-a7f3-a8989302113f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AStar">
+      <UniqueIdentifier>{ab3e14a7-c73c-4bf9-a35a-d13e69d4e15a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Aliens">
+      <UniqueIdentifier>{d57c0532-8b56-4b7a-af39-65e72daf3532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Towers">
+      <UniqueIdentifier>{9446a419-9ca5-4269-9618-b1499089e6b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{73ee79e2-0d10-45f1-81e3-04da95017662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs">
+      <UniqueIdentifier>{1487b454-abd8-45bc-8512-17ee05f9dbf2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\StatusBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThreadManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\Label.cpp">
+      <Filter>Source Files\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\LabelGroup.cpp">
+      <Filter>Source Files\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AStar\AStar.cpp">
+      <Filter>Source Files\AStart</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AStar\Graph.cpp">
+      <Filter>Source Files\AStart</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AStar\Map.cpp">
+      <Filter>Source Files\AStart</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AStar\NodeGraphic.cpp">
+      <Filter>Source Files\AStart</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AStar\NodeLineGraphic.cpp">
+      <Filter>Source Files\AStart</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AStar\PathFinding.cpp">
+      <Filter>Source Files\AStart</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Alien.cpp">
+      <Filter>Source Files\Aliens</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AlienDrone.cpp">
+      <Filter>Source Files\Aliens</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AlienFactory.cpp">
+      <Filter>Source Files\Aliens</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AlienSwarmer.cpp">
+      <Filter>Source Files\Aliens</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AlienTank.cpp">
+      <Filter>Source Files\Aliens</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Tower.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerBarrier.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerBase.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerCannon.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerEnergyBomb.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerFactory.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerFlame.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerLaser.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerTemporal.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerTractor.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TowerUtility.cpp">
+      <Filter>Source Files\Towers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Mutex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StatusBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ThreadManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\gui.h">
+      <Filter>Header Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\gui_predef.h">
+      <Filter>Header Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\Label.h">
+      <Filter>Header Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\LabelGroup.h">
+      <Filter>Header Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\Widget.h">
+      <Filter>Header Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AStar\AStar.h">
+      <Filter>Header Files\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AStar\Graph.h">
+      <Filter>Header Files\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GridNode.h">
+      <Filter>Header Files\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AStar\Map.h">
+      <Filter>Header Files\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AStar\Node2D.h">
+      <Filter>Header Files\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AStar\NodeGraphic.h">
+      <Filter>Header Files\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AStar\NodeLineGraphic.h">
+      <Filter>Header Files\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Alien.h">
+      <Filter>Header Files\Aliens</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AlienDrone.h">
+      <Filter>Header Files\Aliens</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AlienFactory.h">
+      <Filter>Header Files\Aliens</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AlienSwarmer.h">
+      <Filter>Header Files\Aliens</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AlienTank.h">
+      <Filter>Header Files\Aliens</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tower.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerBarrier.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerBase.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerCannon.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerEnergyBomb.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerFactory.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerFlame.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerLaser.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerTemporal.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerTractor.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TowerUtility.h">
+      <Filter>Header Files\Towers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="docs\Design.odt">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="docs\Tasks.odt">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="bin\media\levels\Test.lvl">
+      <Filter>Levels</Filter>
+    </None>
+  </ItemGroup>
+</Project>
