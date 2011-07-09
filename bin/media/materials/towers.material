@@ -1,0 +1,195 @@
+material Material/Tower/Gun
+{
+  technique
+  {
+    pass
+    {
+      ambient 0 1 0
+      diffuse 0 1 0
+    }
+  }
+}
+
+material Material/Tower/Flame
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 0 0
+      diffuse 1 0 0
+    }
+  }
+}
+
+material Material/Tower/Laser
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 0
+      diffuse 1 1 0
+    }
+  }
+}
+
+material Material/Tower/Laser/Shot1
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 0.8 0
+      diffuse 1 0.8 0
+    }
+  }
+}
+
+material Material/Tower/Temporal
+{
+  technique
+  {
+    pass
+    {
+      ambient 0 0 1
+      diffuse 0 0 1
+    }
+  }
+}
+
+material Material/Tower/Tractor
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.5 0.5 1
+      diffuse 0.5 0.5 1
+    }
+  }
+}
+
+material Material/Tower/Cannon
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 0.5 0
+      diffuse 1 0.5 0
+    }
+  }
+}
+
+material Material/Tower/EnergyBomb
+{
+  technique
+  {
+    pass
+    {
+      ambient 0 1 1
+      diffuse 0 1 1
+    }
+  }
+}
+
+material Material/Tower/Barrier
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75
+      diffuse 0.75 0.75 0.75
+    }
+  }
+}
+
+material Material/Tower/Armory
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.8 0.8 0.8
+      diffuse 0.8 0.8 0.8
+      
+      texture_unit
+      {
+        texture A.png
+        colour_op alpha_blend
+      }
+    }
+  }
+}
+
+material Material/Tower/Quantum
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.8 0.8 0.8
+      diffuse 0.8 0.8 0.8
+      
+      texture_unit
+      {
+        texture Q.png
+        colour_op alpha_blend
+      }
+    }
+  }
+}
+
+material Material/Tower/Research
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.8 0.8 0.8
+      diffuse 0.8 0.8 0.8
+      
+      texture_unit
+      {
+        texture R.png
+        colour_op alpha_blend
+      }
+    }
+  }
+}
+
+material Material/Tower/Flame/Shot
+{
+  technique
+  {
+    pass
+    {
+      scene_blend alpha_blend
+      depth_write off
+      cull_hardware none
+      cull_software none
+      
+      ambient 1 0 0 0.25
+      diffuse 1 0 0 0.25
+    }
+  }
+}
+
+material Material/Tower/Temporal/Ring
+{
+  technique
+  {
+    pass
+    {
+      scene_blend alpha_blend
+      depth_write off
+      cull_hardware none
+      cull_software none
+      
+      ambient vertexcolour
+      diffuse vertexcolour
+    }
+  }
+}

@@ -1,0 +1,35 @@
+material Material/Alien/Drone
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 0.8 0.8
+			diffuse 1 0.8 0.8
+		}
+	}
+}
+
+material Material/Alien/Swarmer
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.75 1 0.75
+			diffuse 0.75 1 0.75
+		}
+	}
+}
+
+material Material/Alien/Tank
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.75 0.75 0.75
+			diffuse 0.75 0.75 0.75
+		}
+	}
+}

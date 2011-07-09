@@ -1,0 +1,74 @@
+material Material/TowerBase/Unpassable
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1
+			diffuse 1 1 1
+		}
+	}
+}
+
+material Material/TowerBase/Passable
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.5 0.5 0.5
+			diffuse 0.5 0.5 0.5
+		}
+	}
+}
+
+material Material/TowerBase/Level1
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1
+			diffuse 1 1 1
+
+			texture_unit
+			{
+				texture base_level1.bmp
+			}
+		}
+	}
+}
+
+material Material/TowerBase/Level2
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1
+			diffuse 1 1 1
+
+			texture_unit
+			{
+				texture base_level2.bmp
+			}
+		}
+	}
+}
+
+material Material/TowerBase/Level3
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 1 1
+			diffuse 1 1 1
+
+			texture_unit
+			{
+				texture base_level3.bmp
+			}
+		}
+	}
+}

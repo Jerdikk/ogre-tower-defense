@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0EBD68BF-ACF1-4B4B-A7DC-D787F7933048}</ProjectGuid>
+    <RootNamespace>Ogre7</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">obj\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/GR %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\include;.\include\AStar;.\include\Gui;$(OgreDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OgreMain_d.lib;OIS_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OgreDir)\lib\$(ConfigurationName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)Ogre6.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>$(OgreDir)\lib\$(ConfigurationName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain.lib;OIS.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="source\Application.cpp" />
+    <ClCompile Include="source\Level.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Mutex.cpp" />
+    <ClCompile Include="source\StatusBar.cpp" />
+    <ClCompile Include="source\ThreadManager.cpp" />
+    <ClCompile Include="source\Gui\Label.cpp" />
+    <ClCompile Include="source\Gui\LabelGroup.cpp" />
+    <ClCompile Include="source\Gui\Window.cpp" />
+    <ClCompile Include="source\AStar\AStar.cpp" />
+    <ClCompile Include="source\AStar\Graph.cpp" />
+    <ClCompile Include="source\AStar\Map.cpp" />
+    <ClCompile Include="source\AStar\NodeGraphic.cpp" />
+    <ClCompile Include="source\AStar\NodeLineGraphic.cpp" />
+    <ClCompile Include="source\AStar\PathFinding.cpp" />
+    <ClCompile Include="source\Alien.cpp" />
+    <ClCompile Include="source\AlienDrone.cpp" />
+    <ClCompile Include="source\AlienFactory.cpp" />
+    <ClCompile Include="source\AlienSwarmer.cpp" />
+    <ClCompile Include="source\AlienTank.cpp" />
+    <ClCompile Include="source\Tower.cpp" />
+    <ClCompile Include="source\TowerBarrier.cpp" />
+    <ClCompile Include="source\TowerBase.cpp" />
+    <ClCompile Include="source\TowerCannon.cpp" />
+    <ClCompile Include="source\TowerEnergyBomb.cpp" />
+    <ClCompile Include="source\TowerFactory.cpp" />
+    <ClCompile Include="source\TowerFlame.cpp" />
+    <ClCompile Include="source\TowerLaser.cpp" />
+    <ClCompile Include="source\TowerTemporal.cpp" />
+    <ClCompile Include="source\TowerTractor.cpp" />
+    <ClCompile Include="source\TowerUtility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Application.h" />
+    <ClInclude Include="include\common.h" />
+    <ClInclude Include="include\Level.h" />
+    <ClInclude Include="include\Mutex.h" />
+    <ClInclude Include="include\StatusBar.h" />
+    <ClInclude Include="include\ThreadManager.h" />
+    <ClInclude Include="include\Gui\gui.h" />
+    <ClInclude Include="include\Gui\gui_predef.h" />
+    <ClInclude Include="include\Gui\Label.h" />
+    <ClInclude Include="include\Gui\LabelGroup.h" />
+    <ClInclude Include="include\Gui\Widget.h" />
+    <ClInclude Include="include\Gui\Window.h" />
+    <ClInclude Include="include\AStar\AStar.h" />
+    <ClInclude Include="include\AStar\Graph.h" />
+    <ClInclude Include="include\GridNode.h" />
+    <ClInclude Include="include\AStar\Map.h" />
+    <ClInclude Include="include\AStar\Node2D.h" />
+    <ClInclude Include="include\AStar\NodeGraphic.h" />
+    <ClInclude Include="include\AStar\NodeLineGraphic.h" />
+    <ClInclude Include="include\Alien.h" />
+    <ClInclude Include="include\AlienDrone.h" />
+    <ClInclude Include="include\AlienFactory.h" />
+    <ClInclude Include="include\AlienSwarmer.h" />
+    <ClInclude Include="include\AlienTank.h" />
+    <ClInclude Include="include\Tower.h" />
+    <ClInclude Include="include\TowerBarrier.h" />
+    <ClInclude Include="include\TowerBase.h" />
+    <ClInclude Include="include\TowerCannon.h" />
+    <ClInclude Include="include\TowerEnergyBomb.h" />
+    <ClInclude Include="include\TowerFactory.h" />
+    <ClInclude Include="include\TowerFlame.h" />
+    <ClInclude Include="include\TowerLaser.h" />
+    <ClInclude Include="include\TowerTemporal.h" />
+    <ClInclude Include="include\TowerTractor.h" />
+    <ClInclude Include="include\TowerUtility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\media\levels\Test.lvl" />
+    <None Include="docs\Design.odt" />
+    <None Include="docs\Tasks.odt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

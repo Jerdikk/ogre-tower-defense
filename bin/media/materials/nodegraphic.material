@@ -1,0 +1,23 @@
+material Material/AStar/Node
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 0.2 0.2
+			diffuse 1 0.2 0.2
+		}
+	}
+}
+
+material Material/AStar/NodeFrame
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0
+			diffuse 0 0 0
+		}
+	}
+}

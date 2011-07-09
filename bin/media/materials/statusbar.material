@@ -1,0 +1,23 @@
+fragment_program StatusBarFP hlsl
+{
+	source statusbar.hlsl
+	target ps_2_0
+	entry_point main_fp
+}
+
+material Material/StatusBar
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+
+			fragment_program_ref StatusBarFP
+			{
+			}
+		}
+	}
+}

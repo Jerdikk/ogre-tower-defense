@@ -1,0 +1,12 @@
+material Material/Grid
+{
+	technique
+	{
+		pass
+		{
+			depth_bias 1
+			ambient 0.5 0.5 0.5
+			diffuse 0.5 0.5 0.5
+		}
+	}
+}

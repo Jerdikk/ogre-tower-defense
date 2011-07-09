@@ -1,0 +1,25 @@
+material Material/VertexColor
+{
+  technique
+  {
+    pass
+    {
+      ambient vertexcolour
+      diffuse vertexcolour
+    }
+  }
+}
+
+material Material/BlackLine
+{
+  technique
+  {
+    pass
+    {
+      depth_bias 1
+      
+      ambient 0 0 0
+      diffuse 0 0 0
+    }
+  }
+}

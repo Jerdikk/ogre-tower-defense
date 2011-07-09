@@ -1,0 +1,25 @@
+material Material/Ground
+{
+	technique
+	{
+		pass
+		{
+			//depth_write off
+			ambient 0.25 0.25 0.25
+			diffuse 0.25 0.25 0.25
+		}
+	}
+}
+
+material Material/OpenNode
+{
+	technique
+	{
+		pass
+		{
+			//depth_write off
+			ambient 0.6 0.6 0.6
+			diffuse 0.6 0.6 0.6
+		}
+	}
+}

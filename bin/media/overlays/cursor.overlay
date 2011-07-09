@@ -1,0 +1,30 @@
+Overlay/Cursor
+{
+  zorder 600
+
+  container Panel(Overlay/Cursor/CursorRed)
+  {
+    horz_align center
+    vert_align center
+    metrics_mode pixels
+    
+    left -40
+    top -40
+    width 80
+    height 80
+    material Material/CursorRed
+  }
+  
+  container Panel(Overlay/Cursor/CursorGreen)
+  {
+    horz_align center
+    vert_align center
+    metrics_mode pixels
+    
+    left -40
+    top -40
+    width 80
+    height 80
+    material Material/CursorGreen
+  }
+}

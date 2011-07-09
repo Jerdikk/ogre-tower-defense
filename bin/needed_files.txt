@@ -1,0 +1,21 @@
+The following files are not checked in with the project because they could be different
+from machine to machine (ie, different versions of Ogre, different configuration options,
+etc.)  They can all be found by default in your OgreSDK or Ogre source folder and should
+be copied to this directory.  Remember to get the debug and release versions of the DLLs)
+
+
+
+Config Files
+--------------
+ogre.cfg
+plugins.cfg
+
+
+
+DLLs
+--------------
+OgreMain.dll
+OIS.dll
+RenderSystem_Direct3D9.dll
+ -- or--
+RenderSystem_GL.dll
