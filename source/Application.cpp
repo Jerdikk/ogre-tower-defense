@@ -3,6 +3,7 @@
 #include "Level.h"
 #include "TowerFactory.h"
 #include "common.h"
+#include "gui.h"
 
 //Use this define to signify OIS will be used as a DLL
 //(so that dll import/export macros are in effect)
@@ -22,7 +23,7 @@ Application::Application()
   mpMouse = NULL;
   mpKeyboard = NULL;
   mResourcePath = "";
-  mpLevel = NULL;
+  mpCurrentState = NULL;
 }
 
 /// Standard destructor
@@ -72,10 +73,11 @@ bool Application::setup(void)
   // Load resources
   loadResources();
 
+  // Create the frame listener
+  createFrameListener();
+
   // Create the scene
   createScene();
-
-  createFrameListener();
 
   return true;
 
@@ -321,11 +323,7 @@ bool Application::handleKeyboardInput(const Ogre::FrameEvent& evt)
 
 bool Application::handleMouseInput(const Ogre::FrameEvent& evt)
 {
-  // Rotation factors, may not be used if the second mouse button is pressed
-  // 2nd mouse button - slide, otherwise rotate
   const OIS::MouseState &ms = mpMouse->getMouseState();
-
-  // Mouse Wheel
   int wheel = ms.Z.rel;
 
   // :TODO: Handle mouse input for main menu
@@ -353,8 +351,9 @@ bool Application::frameStarted(const Ogre::FrameEvent& evt)
   if (handleMouseInput(evt) == false)
     return false;
 
-  // Update the level
-  if (mpLevel) mpLevel->update(evt.timeSinceLastFrame, mpMouse, mpKeyboard);
+  // Update the current GameState
+  if (mpCurrentState) 
+    mpCurrentState->update(evt.timeSinceLastFrame);
 
   return true;
 }
@@ -379,9 +378,38 @@ void Application::createScene(void)
   light->setDirection(0, -1, -0.5f);
   light->setDiffuseColour(1, 1, 1);
 
-  Level::initialize(mpSceneMgr);
- 
-  mpLevel = new Level(mpCamera);
-  mpLevel->load("Test");
+  // Setup all the static members of Level (and its dependencies)
+  Level::staticSetup(mpSceneMgr);
+
+  //int top, left, width, height;
+  //mpCamera->getViewport()->getActualDimensions(top, left, width, height);
+
+  //int y = height/2 - 80;
+  //int x = width/2 - 50;
+
+  //// Main Menu
+  //mpMenu = new GUI::Window("MainMenu");
+  //
+  //// New Button
+  //GUI::Label* lblNew = new GUI::Label("New", mpMenu);
+  //lblNew->setPosition(x, y);
+  //y += 40;
+
+  //// Level Editor Button
+  //GUI::Label* lblEdit = new GUI::Label("Editor", mpMenu);
+  //lblEdit->setPosition(x, y);
+  //y += 40;
+
+  //// Exit Button
+  //GUI::Label* lblExit = new GUI::Label("Exit", mpMenu);
+  //lblExit->setPosition(x, y);
+
+  //mpMenu->show();
+  
+  Level* level = new Level;
+  level->initialize(mpCamera, mpMouse, mpKeyboard);
+  level->load("Test");
+
+  mpCurrentState = level;
   //mpLevel->save();
 }

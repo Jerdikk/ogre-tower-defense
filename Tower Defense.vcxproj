@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\common.h" />
+    <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\Level.h" />
     <ClInclude Include="include\Mutex.h" />
     <ClInclude Include="include\StatusBar.h" />

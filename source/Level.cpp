@@ -20,11 +20,8 @@ Ogre::RaySceneQuery* Level::mpsRsq = NULL;
 /***********************************************************************
  *                             PUBLIC                                  *
  ***********************************************************************/
-Level::Level(Ogre::Camera* camera)
-  : mpCamera(camera)
+Level::Level(void)
 {
-  assert(mpsSceneMgr != NULL && "Cannot create Level.  SceneManager has not been set.");
-
   if (AlienFactory::getSingletonPtr() == NULL) new AlienFactory();
 
   mpMutex = new Mutex();
@@ -45,24 +42,15 @@ Level::Level(Ogre::Camera* camera)
   mRightButtonDown = false;
   mPaused = false;
 
+  mpCamera = NULL;
   mpSelectedTower = NULL;
   mpLevelGui = NULL;
   mpPurchaseGui = NULL;
   mpUpgradeGui = NULL;
-
-  // Get the OverlayElements for the cursor red/green
+  lblResources = NULL;
+  lblDebug = NULL;
   mpCursorRed = NULL;
   mpCursorGreen = NULL;
-  Ogre::Overlay* overlay = Ogre::OverlayManager::getSingleton().getByName("Overlay/Cursor");
-  if (overlay)
-  {
-    mpCursorRed = overlay->getChild("Overlay/Cursor/CursorRed");
-    mpCursorGreen = overlay->getChild("Overlay/Cursor/CursorGreen");
-
-    overlay->show();
-    mpCursorRed->show();
-    mpCursorGreen->hide();
-  }
 }
 
 Level::~Level(void)
@@ -89,8 +77,34 @@ Level::~Level(void)
   mOtherGraphics.clear();
 }
 
-// static
-void Level::initialize(Ogre::SceneManager* sceneMgr)
+void Level::initialize(
+  Ogre::Camera* camera,
+  OIS::Mouse* mouse,	
+  OIS::Keyboard* keyboard)
+{
+  mpCamera = camera;
+  mpMouse = mouse;
+  mpKeyboard = keyboard;
+
+  // Get the OverlayElements for the cursor red/green
+  mpCursorRed = NULL;
+  mpCursorGreen = NULL;
+  Ogre::Overlay* overlay = Ogre::OverlayManager::getSingleton().getByName("Overlay/Cursor");
+  if (overlay)
+  {
+    mpCursorRed = overlay->getChild("Overlay/Cursor/CursorRed");
+    mpCursorGreen = overlay->getChild("Overlay/Cursor/CursorGreen");
+
+    overlay->show();
+    mpCursorRed->show();
+    mpCursorGreen->hide();
+  }
+
+  // Initialize the GUI
+  _initGui();
+}
+
+void Level::staticSetup(Ogre::SceneManager* sceneMgr)
 {
   if (mpsRsq) mpsSceneMgr->destroyQuery(mpsRsq);
 
@@ -214,9 +228,6 @@ bool Level::load(const Ogre::String& name)
       }
     }
 
-    // Initialize the GUI
-    _initGui();
-
     // Find the initial path - Call the background thread directly
     ThreadArgs* args = new ThreadArgs();
     args->level = this;
@@ -274,16 +285,18 @@ bool Level::save(void)
   return success;
 }
 
-void Level::update(float t, OIS::Mouse* mouse,	OIS::Keyboard* keyboard)
+bool Level::update(float t)
 {
   // :TEMP: Prevent excessing frame rates that result from the device
   // losing focus
   if (t > 0.1f) t = 0.1f;
 
-  lblResources->setText("Resources: " + Ogre::StringConverter::toString(mResources));
+  if (lblResources) 
+    lblResources->setText("Resources: " + Ogre::StringConverter::toString(mResources));
 
   // One of the input modes is immediate, so setup what is needed for immediate movement
-  if (mTimeUntilNextToggle >= 0) mTimeUntilNextToggle -= t;
+  if (mTimeUntilNextToggle >= 0) 
+    mTimeUntilNextToggle -= t;
 
   // Move about 100 units per second
   mMoveScale = mMoveSpeed * t;
@@ -305,12 +318,14 @@ void Level::update(float t, OIS::Mouse* mouse,	OIS::Keyboard* keyboard)
   }
 
   // Handle user input
-  _handleMouseInput(t, mouse);
-  _handleKeyboardInput(t, keyboard);
+  _handleMouseInput(t);
+  _handleKeyboardInput(t);
 
   // Update the camera
   _moveCamera();
   _moveCursor();
+
+  return true;
 }
 
 void Level::onClick(GUI::Label* label)
@@ -472,6 +487,7 @@ void Level::_initGui(void)
   // Debug
   lblDebug = new GUI::Label(mpLevelGui);
   lblDebug->setPosition(30, 30);
+  lblDebug->setText("Debug Label");
 
   // Resources
   lblResources = new GUI::Label("Resources: ", mpLevelGui);
@@ -646,18 +662,18 @@ void Level::_updateAliens(float t)
   }
 }
 
-void Level::_handleMouseInput(float t, OIS::Mouse* mouse)
+void Level::_handleMouseInput(float t)
 {
   if (mpPurchaseGui->isVisible() || mpUpgradeGui->isVisible())
   {
     // If the GUI is already visible, handle GUI input
-    _handleGui(t, mouse);
+    _handleGui(t);
     return;
   }
 
   // Rotation factors, may not be used if the second mouse button is pressed
   // 2nd mouse button - slide, otherwise rotate
-  const OIS::MouseState &ms = mouse->getMouseState();
+  const OIS::MouseState &ms = mpMouse->getMouseState();
 
   // Determine if either mouse button was clicked.  We're looking to see if the
   // button was down last frame and not this frame.  That's a click.
@@ -714,7 +730,7 @@ void Level::_handleMouseInput(float t, OIS::Mouse* mouse)
   }
 }
 
-void Level::_handleKeyboardInput(float t, OIS::Keyboard* keyboard)
+void Level::_handleKeyboardInput(float t)
 {
   static Ogre::Real sTimeSinceLastToggle = 0;
   sTimeSinceLastToggle += t;
@@ -731,23 +747,23 @@ void Level::_handleKeyboardInput(float t, OIS::Keyboard* keyboard)
   //if(keyboard->isKeyDown(OIS::KC_DOWN))
   //  mTranslateVector.z = mMoveScale;	// Move camera backward
 
-  if(keyboard->isKeyDown(OIS::KC_PGUP))
+  if(mpKeyboard->isKeyDown(OIS::KC_PGUP))
     mTranslateVector.y = mMoveScale;	// Move camera up
 
-  if(keyboard->isKeyDown(OIS::KC_PGDOWN))
+  if(mpKeyboard->isKeyDown(OIS::KC_PGDOWN))
     mTranslateVector.y = -mMoveScale;	// Move camera down
 
-  if(keyboard->isKeyDown(OIS::KC_RIGHT))
+  if(mpKeyboard->isKeyDown(OIS::KC_RIGHT))
     mRotX = -mRotScale;
 
-  if(keyboard->isKeyDown(OIS::KC_LEFT))
+  if(mpKeyboard->isKeyDown(OIS::KC_LEFT))
     mRotX = mRotScale;
 
   if (sTimeSinceLastToggle >= 0.1)
   {
     sTimeSinceLastToggle = 0;
 
-    if(keyboard->isKeyDown(OIS::KC_P))
+    if(mpKeyboard->isKeyDown(OIS::KC_P))
       mPaused = !mPaused;
   }
 }
@@ -795,7 +811,7 @@ void Level::_moveCursor()
     if (intersection.first)
     {
       Ogre::Vector3 point = ray.getPoint(intersection.second);
-      lblDebug->setText(Ogre::StringConverter::toString(point));
+      if (lblDebug) lblDebug->setText(Ogre::StringConverter::toString(point));
     }
 
     // Create RaySceneQuery
@@ -867,10 +883,10 @@ void Level::_removeCursorFromMaterial(const Ogre::String& matName)
   //}
 }
 
-void Level::_handleGui(float t, OIS::Mouse* mouse)
+void Level::_handleGui(float t)
 {
   bool mapChanged = false;
-  const OIS::MouseState &ms = mouse->getMouseState();
+  const OIS::MouseState &ms = mpMouse->getMouseState();
 
   // Mouse Wheel
   int wheel = ms.Z.rel;

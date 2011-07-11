@@ -5,12 +5,13 @@
 
 // Forward Declarations
 #include <OgrePrerequisites.h>
+#include "gui_predef.h"
 namespace OIS {
   class InputManager;
   class Mouse;
   class Keyboard;
 };
-class Level;
+class GameState;
 
 class Application: public Ogre::FrameListener, public Ogre::WindowEventListener
 {
@@ -53,7 +54,7 @@ protected:
   Ogre::RenderWindow* mpWindow;
   Ogre::String mResourcePath;
   Ogre::String mDebugText;
-  Level* mpLevel;
+  GameState* mpCurrentState;
 
   // Input Related Stuff
 	Ogre::Overlay* mpDebugOverlay;
@@ -65,4 +66,7 @@ protected:
 	OIS::InputManager*  mpInputManager;
 	OIS::Mouse*         mpMouse;
 	OIS::Keyboard*      mpKeyboard;
+
+  // Gui
+  GUI::Window* mpMenu;
 };

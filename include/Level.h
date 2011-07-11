@@ -3,6 +3,7 @@
 #include <OgrePrerequisites.h>
 #include <OgreVector2.h>
 #include <OgreAxisAlignedBox.h>
+#include "GameState.h"
 #include "Map.h"
 #include "gui_predef.h"
 
@@ -16,13 +17,18 @@ class Mutex;
 typedef std::vector<TowerBase*> TowerBaseList;
 typedef std::vector<NodeGraphic*> NodeGraphicList;
 
-class Level
+class Level : public GameState
 {
 public:
-  Level(Ogre::Camera* camera);
+  Level(void);
   ~Level(void);
 
-  static void initialize(Ogre::SceneManager* sceneMgr);
+  static void staticSetup(Ogre::SceneManager* sceneMgr);
+
+  void initialize(
+    Ogre::Camera* camera,
+    OIS::Mouse* mouse,	
+    OIS::Keyboard* keyboard);
 
   // Load a new area from file
   bool load(const Ogre::String& name);
@@ -32,9 +38,7 @@ public:
 
   // Update the level each frame.
   // @param t Time since last frame
-  // @param mouse Pointer to the mouse object
-  // @param keyboard Pointer to the keyboard object
-  void update(float t, OIS::Mouse* mouse,	OIS::Keyboard* keyboard);
+  bool update(float t);
 
   // INHERITED FROM LABELCALLBACK
   void onClick(GUI::Label* label);
@@ -69,7 +73,6 @@ protected:
   void onLabelClicked(GUI::Widget* label);
 
 private:
-  Level(void) {}
   Level(const Level& ) {}
   Level& operator = (const Level&) {}
 
@@ -79,13 +82,13 @@ private:
 
   // Private update methods
   void _updateAliens(float t);
-  void _handleMouseInput(float t, OIS::Mouse* mouse);
-  void _handleKeyboardInput(float t, OIS::Keyboard* keyboard);
+  void _handleMouseInput(float t);
+  void _handleKeyboardInput(float t);
+  void _handleGui(float t);
   void _moveCamera();
   void _moveCursor();
   void _projectCursorOnMaterial(const Ogre::String& matName);
   void _removeCursorFromMaterial(const Ogre::String& matName);
-  void _handleGui(float t, OIS::Mouse* mouse);
 
   void _showGui();
 
@@ -108,6 +111,8 @@ private:
   Ogre::OverlayElement* mpCursorGreen;
 
   // Input Related
+  OIS::Mouse*     mpMouse;
+  OIS::Keyboard*  mpKeyboard;
   Ogre::Camera*   mpCamera;     // Owned by Application
   Ogre::Radian    mRotX;
   Ogre::Radian    mRotY;
